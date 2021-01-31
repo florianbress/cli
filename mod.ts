@@ -1,5 +1,4 @@
-import { Input, Secret } from "./deps.ts";
-import { init } from "./src/util.ts";
+import { copy, Input } from "./deps.ts";
 
 // Default and official templates
 const TEMPLATES = ["default"];
@@ -11,11 +10,7 @@ const name = await Input.prompt({
   default: "discordeno-bot",
 });
 
-const token = await Secret.prompt({
-  message: "Enter the token of the bot:",
-});
-
-let template = await Input.prompt({
+const template = await Input.prompt({
   message: "Select a template for the bot:",
   default: "default",
   suggestions: TEMPLATES,
@@ -31,7 +26,14 @@ if (TEMPLATES.includes(template)) {
     list: true,
   });
 
-  template += `/${type}`;
+  const templateDir = await Deno.realPath(template);
+
+  // Create the target directory and copy template directory to the target directory
+  await copy(`${templateDir}/${type}`, name);
+
+  // Create and copy the "deps.ts" and "config.ts" file to the target directory.
+  await copy(`${templateDir}/deps.ts`, `${name}/deps.ts`);
+  await copy(`${templateDir}/config.ts`, `${name}/config.ts`);
 }
 
-await init(template, name, token);
+// TODO: support for third-party templates
