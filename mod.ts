@@ -16,7 +16,7 @@ const template = await Input.prompt({
   suggestions: TEMPLATES,
   list: true,
 });
-
+console;
 // Additional prompt for default and official templates
 if (TEMPLATES.includes(template)) {
   const type = await Input.prompt({
