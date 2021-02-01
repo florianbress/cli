@@ -60,7 +60,7 @@ if (TEMPLATES.includes(template)) {
   // Write the content of the array buffer to the writer (temporary file)
   await Deno.writeAll(tmpDir, new Uint8Array(arrayBuffer));
   // Close the file resource by resource ID
-  await Deno.close(tmpDir.rid);
+  Deno.close(tmpDir.rid);
 
   // Append the current working directory to the target directory name
   const destPath = `${Deno.cwd()}/${name}`;
