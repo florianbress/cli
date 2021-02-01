@@ -1,5 +1,4 @@
-import { Select } from "https://deno.land/x/cliffy@v0.17.0/prompt/select.ts";
-import { copy, Input } from "./deps.ts";
+import { copy, Input, Select } from "./deps.ts";
 
 // Officially-supported templates
 const TEMPLATES = [
