@@ -7,7 +7,7 @@ The official and powerful [Discordeno](https://discordeno.mod.land) CLI
 Run this command to install Discordeno CLI:
 
 ```bash
-deno install --allow-net --allow-read --allow-write --allow-run --name discordeno https://raw.githubusercontent.com/discordeno/cli/main/mod.ts
+deno install --allow-net --allow-read --allow-write --allow-run --unstable --name discordeno https://raw.githubusercontent.com/discordeno/cli/main/mod.ts
 ```
 
 ## Usage
